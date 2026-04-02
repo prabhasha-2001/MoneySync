@@ -49,6 +49,8 @@ python app.py
 Visit http://127.0.0.1:5000 in your browser.
 
 
+
+
 ## Clone the repository
 git clone https://github.com/prabhasha-2001/MoneySync.git
 cd MoneySync 
