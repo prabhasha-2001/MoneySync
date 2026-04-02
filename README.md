@@ -1,103 +1,54 @@
-MoneySync | Personal Finance Visualizer & Predictor
-MoneySync is a smart personal finance management web application designed to help users take control of their financial health. By tracking daily transactions, visualizing spending habits through interactive charts, and providing intelligent insights into future expenses, MoneySync simplifies money management for everyone.
+# MoneySync | Personal Finance Visualizer & Predictor
 
-Features
-1. Smart Dashboard
-Real-time Balance: Automatically calculates your total balance by factoring in both income and expenses.
+MoneySync helps you track, visualize, and plan your personal finances with ease. Get insights, alerts, and interactive charts to manage your money better.
 
-Visual Analytics: View your spending distribution across different categories (Food, Rent, Transport, etc.) using interactive Chart.js doughnut charts.
+## Features
+Dashboard: Real-time balance, interactive spending charts, recent 5 transactions
+Transactions: Manual entry, CSV bulk upload, search & filter
+Insights: Spending patterns, overspend alerts
+Secure Login: Encrypted password authentication
 
-Recent Activity: A quick-glance table showing your most recent 5 transactions.
-
-2. Transaction Management
-Manual Entry: Add transactions easily with categories, descriptions, and dates.
-
-CSV Bulk Upload: Skip manual entry by importing your bank statements directly via CSV files.
-
-Filtered View: Search and filter your entire transaction history by description or category.
-
-3. Intelligent Insights
-Smart Guidance: The system analyzes your past spending behavior to identify patterns.
-
-Overspend Warning: Receive alerts if your current habits suggest you might exceed your typical limits next month.
-
-4. Secure Authentication
-User registration and login system with encrypted password hashing to keep your financial data private and secure.
-
-Tech Stack
+## Tech Stack
 Frontend: HTML5, CSS3 (Bootstrap 5), JavaScript (Chart.js)
-
-Backend: Python (Flask Framework)
-
+Backend: Python (Flask)
 Database: MySQL
-
-Data Analysis: Pandas (for CSV processing and spending insights)
-
+Data Analysis: Pandas
 Templating: Jinja2
 
-Project Structure
-Plaintext
+## Project Structure
+
 MoneySync/
-├── static/                # CSS, JS, and Image assets
-├── templates/             # HTML templates (Dashboard, Login, etc.)
-├── data_science/          # Python logic for ML predictions and analysis
-├── extensions.py          # Flask extensions configuration (MySQL)
-├── auth.py                # Authentication routes (Login/Signup)
-├── routes.py              # Main application routes (Dashboard, Transactions)
-├── utils.py               # Helper functions (Formatting, Validations)
-├── schema.sql             # Database structure and seed data
-└── app.py                 # Application entry point
+├── static/        # CSS, JS, images
+├── templates/     # HTML templates
+├── data_science/  # Python logic for predictions & analysis
+├── extensions.py  # Flask + MySQL config
+├── auth.py        # Login/Signup routes
+├── routes.py      # Main app routes
+├── utils.py       # Helper functions
+├── schema.sql     # Database structure
+└── app.py         # App entry point
 
-Installation & Setup
+## Setup
+1. Install Python 3.x & MySQL
 
-1. Prerequisites
-Python 3.x installed.
-
-MySQL Server installed and running.
-
-
-2. Database Setup
-Run the following command in your MySQL terminal or import the schema.sql file in phpMyAdmin:
-
-SQL
+2. Create database & import schema.sql
 SOURCE path/to/schema.sql;
 
-3. Clone and Install Dependencies
-Bash
-
-# Clone the repository
-git clone 
-cd MoneySync
-
-# Install required libraries
+3. Install dependencies
 pip install flask flask-mysqldb pandas
 
-4. Configuration
-Update your database credentials in app.py or extensions.py:
-
-Python
+4. Update DB credentials in app.py / extensions.py
 app.config['MYSQL_HOST'] = 'localhost'
-app.config['MYSQL_USER'] = 'your_username'
-app.config['MYSQL_PASSWORD'] = 'your_password'
+app.config['MYSQL_USER'] = 'username'
+app.config['MYSQL_PASSWORD'] = 'password'
 app.config['MYSQL_DB'] = 'moneysync_db'
 
-5. Run the Application
-Bash
+5. Run the app
 python app.py
-Open your browser and navigate to http://127.0.0.1:5000.
+
+Visit http://127.0.0.1:5000 in your browser.
 
 
-CSV Import Format
-To ensure a successful bulk upload, your CSV file should follow this structure:
-| date | category | amount | description |
-| :--- | :--- | :--- | :--- |
-| 2026-03-25 | Salary | 30000.00 | Monthly Pay |
-| 2026-03-31 | Food & Dining | 500.00 | Dinner |
-
-
-License
-This project is licensed under the MIT License - see the LICENSE file for details.
-
-Contributing
-Contributions, issues, and feature requests are welcome! Feel free to check the issues page.
-
+## Clone the repository
+git clone https://github.com/prabhasha-2001/MoneySync.git
+cd MoneySync 
