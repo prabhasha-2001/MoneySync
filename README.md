@@ -27,7 +27,7 @@ MoneySync/
 ├── utils.py         # Helper functions
 ├── schema.sql       # Database structure
 └── app.py           # App entry point
-
+```
 
 ## Setup
 1. Install Python 3.x & MySQL
