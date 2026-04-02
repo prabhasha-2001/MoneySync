@@ -15,17 +15,18 @@ Database: MySQL
 Data Analysis: Pandas
 Templating: Jinja2
 
-## Project Structure
+##  Project Structure
+```text
 MoneySync/
-├── static/        # CSS, JS, images
-├── templates/     # HTML templates
-├── data_science/  # Python logic for predictions & analysis
-├── extensions.py  # Flask + MySQL config
-├── auth.py        # Login/Signup routes
-├── routes.py      # Main app routes
-├── utils.py       # Helper functions
-├── schema.sql     # Database structure
-└── app.py         # App entry point
+├── static/          # CSS, JS, images
+├── templates/       # HTML templates
+├── data_science/    # Python logic for predictions & analysis
+├── extensions.py    # Flask + MySQL config
+├── auth.py          # Login/Signup routes
+├── routes.py        # Main app routes
+├── utils.py         # Helper functions
+├── schema.sql       # Database structure
+└── app.py           # App entry point
 
 
 ## Setup
