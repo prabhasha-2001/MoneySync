@@ -39,12 +39,14 @@ SOURCE path/to/schema.sql;
 pip install flask flask-mysqldb pandas
 
 4. Update DB credentials in app.py / extensions.py
+```text   
 app.config['MYSQL_HOST'] = 'localhost'
 app.config['MYSQL_USER'] = 'username'
 app.config['MYSQL_PASSWORD'] = 'password'
 app.config['MYSQL_DB'] = 'moneysync_db'
+```
 
-5. Run the app
+6. Run the app
 python app.py
 
 Visit http://127.0.0.1:5000 in your browser.
