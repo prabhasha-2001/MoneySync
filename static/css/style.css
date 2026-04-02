@@ -1,0 +1,41 @@
+/* custom fintech palette */
+:root {
+    --primary-blue: #2563eb;
+    --success-green: #10b981;
+    --danger-red: #ef4444;
+    --bg-light: #f8fafc;
+}
+
+body {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    background-color: var(--bg-light);
+}
+
+.card {
+    border: none;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    transition: transform 0.2s;
+}
+
+.card:hover {
+    transform: translateY(-2px);
+}
+
+.navbar-brand {
+    font-weight: 800;
+    letter-spacing: -0.5px;
+}
+
+/* transaction */
+.text-success { color: var(--success-green) !important; font-weight: 600; }
+.text-danger { color: var(--danger-red) !important; font-weight: 600; }
+
+.btn-primary { background-color: var(--primary-blue); border: none; }
+.btn-primary:hover { background-color: #1d4ed8; }
+
+/* dashboard chart container */
+#spendingChart {
+    max-height: 300px;
+    margin-top: 20px;
+}

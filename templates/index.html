@@ -1,0 +1,62 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="container">
+    <div class="row align-items-center py-5">
+        <div class="col-lg-6">
+            <h1 class="display-4 fw-bold text-dark mb-3">
+                Master Your Money with <span class="text-primary">Smart Planning</span>
+            </h1> <p class="lead text-secondary mb-4">
+                Stop wondering where your paycheck went. MoneySync tracks your spending, 
+                visualizes your habits and helps you stay ahead by predicting upcoming expenses before they happen.
+            </p>
+            <div class="d-grid gap-3 d-md-flex justify-content-md-start">
+                <a href="{{ url_for('auth.signup') }}" class="btn btn-primary btn-lg px-4 me-md-2">Start for Free</a>
+                <a href="{{ url_for('auth.login') }}" class="btn btn-outline-secondary btn-lg px-4">Login</a>
+            </div>
+        </div>
+        <div class="col-lg-6 d-none d-lg-block">
+            <div class="card shadow-lg border-0 p-2 bg-dark">
+                <div class="card-body bg-white rounded">
+                    <h6 class="text-muted mb-3">Quick Preview</h6>
+                    <div class="progress mb-3" style="height: 10px;">
+                        <div class="progress-bar bg-success" style="width: 70%"></div>
+                    </div>
+                    <div class="progress mb-3" style="height: 10px;">
+                        <div class="progress-bar bg-danger" style="width: 45%"></div>
+                    </div>
+                    <div class="text-center py-4">
+                        <span class="display-6 fw-bold">Rs.2,450.00</span>
+                        <p class="small text-uppercase text-muted">Current Balance</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <hr class="my-5">
+
+    <div class="row g-4 py-5 row-cols-1 row-cols-lg-2">
+        <div class="col d-flex align-items-start">
+            <div>
+                <h3 class="fs-4 text-body-emphasis">📊 Visual Analytics</h3>
+                <p>Beautiful charts show you exactly how much you spend on Rent, Food, and Fun at a single glance.</p>
+            </div>
+        </div>
+        <div class="col d-flex align-items-start">
+            <div>
+                <h3 class="fs-4 text-body-emphasis">🤖 AI Predictions</h3>
+                <p>MoneySync analyzes your past behavior to warn you if you're likely to overspend next month.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+
+    .display-4 {
+        letter-spacing: -2px;
+        line-height: 1.1;
+    }
+</style>
+{% endblock %}

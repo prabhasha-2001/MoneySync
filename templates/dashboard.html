@@ -1,0 +1,100 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="row mb-4">
+    <div class="col-md-4">
+        <div class="card text-white bg-primary mb-3 shadow-sm border-0">
+            <div class="card-body">
+                <h5 class="card-title">Total Balance</h5>
+                <p class="card-text h2">Rs. {{ "%.2f"|format(total_balance) }}</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-8 text-end">
+        <a href="/add_transaction" class="btn btn-success btn-lg shadow-sm">+ Add Transaction</a>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-6">
+        <div class="card p-3 shadow-sm border-0">
+            <h5 class="mb-3">Spending by Category</h5>
+            <div id="chartContainer" 
+                 style="min-height: 300px; position: relative;"
+                 data-labels='{{ chart_labels | tojson | safe }}'
+                 data-values='{{ chart_values | tojson | safe }}'>
+                <canvas id="spendingChart"></canvas>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="card p-3 shadow-sm border-0">
+            <h5 class="mb-3">Recent Transactions</h5>
+            <div class="table-responsive">
+                <table class="table table-hover mt-2">
+                    <thead class="table-light">
+                        <tr>
+                            <th>Date</th>
+                            <th>Category</th>
+                            <th class="text-end">Amount</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for t in transactions %}
+                        <tr>
+                            <td>{{ t.transaction_date }}</td>
+                            <td><span class="badge bg-light text-dark border">{{ t.category_name }}</span></td>
+                            <td class="text-end fw-bold {{ 'text-danger' if t.type == 'expense' else 'text-success' }}">
+                                {{ '-' if t.type == 'expense' else '+' }}Rs.{{ "%.2f"|format(t.amount) }}
+                            </td>
+                        </tr>
+                        {% else %}
+                        <tr>
+                            <td colspan="3" class="text-center text-muted py-3">No recent transactions.</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const container = document.getElementById('chartContainer');
+        const ctx = document.getElementById('spendingChart');
+
+        const labels = JSON.parse(container.getAttribute('data-labels') || '[]');
+        const dataValues = JSON.parse(container.getAttribute('data-values') || '[]');
+
+        if (labels.length > 0 && ctx) {
+            new Chart(ctx, {
+                type: 'doughnut', 
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        data: dataValues,
+                        backgroundColor: [
+                            '#4e73df', '#1cc88a', '#36b9cc', '#f6c23e', '#e74a3b', '#858796'
+                        ],
+                        hoverOffset: 4
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'bottom'
+                        }
+                    }
+                }
+            });
+        } else if (container) {
+            container.innerHTML = '<div class="text-center py-5 text-muted"><p>No expense data available for chart.</p></div>';
+        }
+    });
+</script>
+{% endblock %}

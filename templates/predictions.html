@@ -1,0 +1,67 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-8 mx-auto">
+        {% if error_message %}
+            <div class="alert alert-warning text-center border-0 shadow-sm mb-4">
+                <h5 class="mb-1">Notice</h5>
+                {{ error_message }}
+            </div>
+        {% endif %}
+
+        <div class="card border-0 shadow-lg overflow-hidden">
+            <div class="bg-primary p-4 text-white text-center">
+                <h3 class="mb-0">AI Financial Insights</h3>
+            </div>
+            <div class="card-body p-5">
+                <div class="text-center mb-5">
+                    <h5 class="text-muted">Next Month's Forecasted Expenses</h5>
+                    <h1 class="display-3 fw-bold text-primary">
+                        Rs. {{ "%.2f"|format(prediction) if prediction else "0.00" }}
+                    </h1>
+                    <p class="text-secondary small">
+                        Based on your spending patterns from previous months.
+                    </p>
+                </div>
+
+                <hr>
+
+                <div class="mt-4">
+                    <h5> Smart Recommendations</h5>
+                    <ul class="list-group list-group-flush">
+                        {% if prediction and avg_spending %}
+                            {% if prediction > avg_spending %}
+                            <li class="list-group-item border-0">
+                                <span class="text-warning">●</span> 
+                                Your spending is trending <strong>upwards</strong>. Consider reviewing your "Entertainment" category.
+                            </li>
+                            {% else %}
+                            <li class="list-group-item border-0">
+                                <span class="text-success">●</span> 
+                                Great job! You're predicted to spend <strong>less</strong> than your historical average.
+                            </li>
+                            {% endif %}
+                        {% else %}
+                            <li class="list-group-item border-0">
+                                <span class="text-info">●</span> 
+                                Not enough historical data to generate smart recommendations.
+                            </li>
+                        {% endif %}
+                        <li class="list-group-item border-0">
+                            <span class="text-info">●</span> 
+                            Setting a budget for "Food & Dining" could save you an additional 10% next month.
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="text-center mt-5">
+                    <a href="{{ url_for('routes.dashboard') }}" class="btn btn-outline-secondary">
+                        Back to Dashboard
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

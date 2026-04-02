@@ -1,0 +1,7 @@
+flask
+flask-mysqldb
+werkzeug
+pandas
+scikit-learn
+matplotlib
+mysql-connector-python
