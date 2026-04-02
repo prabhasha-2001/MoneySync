@@ -3,7 +3,6 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from extensions import mysql
 import MySQLdb.cursors
 
-# 1. Blueprint එක හදන්නේ එක පාරයි
 auth_bp = Blueprint('auth', __name__)
 
 @auth_bp.route('/login', methods=['GET', 'POST'])
